@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>情報更新画面</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/updPage.css}">
+</head>
+<body>
+<h3>情報更新画面</h3>
+<form id="form1" th:action="@{/stuUpd}" method="post">
+<input id="inId" type="hidden" name="id"  th:value="${stu.id}">
+<table>
+<tr>
+    <td>name:</td>
+    <td><input id="inName" type="text" name="stuName" th:value="${stu.stuName}"></td>
+    <td><p id="pName"></p></td>
+</tr>
+<tr>
+    <td>gender:</td>
+<!--    <td><input id="inGender" type="text" name="gender" th:value="${stu.gender}"></td>-->
+<!--    <td><p id="pGender"></p></td>-->
+		<td>
+			<input type="radio" name="gender" value="0" checked>man
+			<input type="radio" name="gender" value="1">woman
+		</td>
+</tr>
+<tr>
+    <td>birthday:</td>
+    <td><input id="inBirthday" type="text" name="birthday" th:value="${stu.birthday}"></td>
+    <td><p id="pBirthday"></p></td>
+</tr>
+<tr>
+    <td>address:</td>
+    <td><input type="text" name="address" th:value="${stu.address}"></td>
+</tr>
+<tr>
+    <td>phone:</td>
+    <td><input id="inPhone" type="text" name="phone" th:value="${stu.phone}"></td>
+    <td><p id="pPhone"></p></td>
+</tr>
+
+</table>
+ </form>
+<br>
+ <input type="button" onclick="history.back()" value="戻る">
+<br>
+<input id="upd" type="button" value="更新">
+<script>
+		$(function() {
+			var check1 = 0;
+			var check2 = 0;
+			//var check3 = 0;
+			var check4 = 0;
+
+			$("#inName").on("blur", function() {
+				if ($("#inName").val() === null || $("#inName").val() === "") {
+					$("#pName").text("*名前を入力してください").css("color", "red")
+					check1 = 1
+				} else {
+					$("#pName").text("✅")
+					check1 = 0
+				}
+			})
+
+			$("#inBirthday").on(
+					"blur",
+					function() {
+						var reg = /^\d{8}$/
+
+						if (!reg.test($("#inBirthday").val())) {
+							$("#pBirthday").text("*お誕生日は8桁の数値を入力してください").css(
+									"color", "red")
+							check3 = 1
+						} else {
+							$("#pBirthday").text("✅")
+							check3 = 0
+						}
+					})
+
+			$("#inPhone").on("blur", function() {
+				var reg = /^[0-9]{11}$/
+
+				if (!reg.test($("#inPhone").val())) {
+					$("#pPhone").text("*電話は11桁の数値を入力してください").css("color", "red")
+					check4 = 1
+				} else {
+					$("#pPhone").text("✅")
+					check4 = 0
+				}
+			})
+
+			$("#upd").on(
+					"click",
+					function() {
+						if (check1 === 0 && check2 === 0 && check3 === 0
+								&& check4 === 0) {
+                                let birthday = $("#inBirthday").val(); 
+                                let formatted = birthday.replace(/-/g, "");
+                                $("#inBirthday").val(formatted); 
+                                
+							    $("#form1").submit()
+						}
+					})
+		})
+	</script>
+</body>
+</html>

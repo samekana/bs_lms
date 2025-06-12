@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/detPage.css}">
+<title>詳細照会画面</title>
+</head>
+<body>
+<h3>More Information</h3>
+<input id="inId" type="hidden" name="id"  th:value="${stu.id}">
+<table>
+<tr>
+    <td>name:</td>
+    <td><input id="inName" type="text" name="stuName"  th:value="${stu.stuName}" readonly></td>
+    <td><p id="pName"></p></td>
+</tr>
+<tr>
+    <td>gender:</td>
+    <td><input id="inGender" type="text" name="gender" th:value="${stu.gender}" readonly></td>
+    <td><p id="pGender"></p></td>
+</tr>
+<tr>
+    <td>birthday:</td>
+    <td><input id="inBirthday" type="text" name="birthday" th:value="${stu.birthday}" readonly></td>
+    <td><p id="pBirthday"></p></td>
+</tr>
+<tr>
+    <td>address:</td>
+    <td><input type="text" name="address" th:value="${stu.address}" readonly></td>
+</tr>
+<tr>
+    <td>phone:</td>
+    <td><input id="inPhone" type="text" name="phone" th:value="${stu.phone}" readonly></td>
+    <td><p id="pPhone"></p></td>
+</tr>
+<tr>
+    <td>createdate:</td>
+    <td><input id="inCreatedate" type="text" name="createDate" th:value="${stu.createDate}" readonly></td>
+    <td><p id="pCreatedate"></p></td>
+</tr>
+<tr>
+    <td>updatedate:</td>
+    <td><input id="inUpdatadate" type="text" name="updateDate" th:value="${stu.updateDate}" readonly></td>
+    <td><p id="pUpdatadate"></p></td>
+</tr>
+</table>
+<br>
+ <input type="button" onclick="history.back()" value="戻る">
+<br>
+<input type="button" value="更新画面遷移"
+th:onclick="'location.href=\'/toUpdPage?id=' + ${stu.id} + '\''">
+</body>
+</html>
+  <!--  <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="delflge" jdbcType="INTEGER" property="delflge" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+    <result column="delete_date" jdbcType="DATE" property="deleteDate" />-->

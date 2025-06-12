@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規登録画面</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/addPage.css}">
+</head>
+<body>
+<h3>ADD Student</h3>
+
+<form id="form1" th:action="@{/addStu}" method="post">
+<table>
+<tr>
+    <td>name:</td>
+    <td><input id="inName" type="text" name="stuName"></td>
+    <td><p id="pName"></p></td>
+</tr>
+<tr>
+    <td>gender:</td>
+<!--    <td><input id="inGender" type="text" name="gender" placeholder="0また1を入力してください"></td>-->
+<!--    <td><p id="pGender"></p></td>-->
+		<td>
+			<input type="radio" name="gender" value="0" checked>man
+			<input type="radio" name="gender" value="1">woman
+		</td>
+</tr>
+<tr>
+    <td>birthday:</td>
+    <td><input id="inBirthday" type="text" name="birthday" placeholder="8桁の数値を入力してください"></td>
+    <td><p id="pBirthday"></p></td>
+</tr>
+<tr>
+    <td>address:</td>
+    <td><input type="text" name="address"></td>
+</tr>
+<tr>
+    <td>phone:</td>
+    <td><input id="inPhone" type="text" name="phone" placeholder="11桁の数値を入力してください"></td>
+    <td><p id="pPhone"></p></td>
+</tr>
+</table>
+<br>
+ <input type="button" onclick="history.back()" value="back">
+<br>
+<input id="add" type="button" value="login">
+</form>
+
+<script>
+$(function(){
+	var check1 = 0;
+	var check2 = 0;
+	//var check3 = 0;
+	var check4 = 0;
+	
+    $("#inName").on("blur",function(){
+        if($("#inName").val() === null || $("#inName").val() ===""){
+            $("#pName").text("*名前を入力してください").css("color","red")
+            check1 = 1
+        }else{
+            $("#pName").text("✅")
+            check1 = 0
+        }
+    })
+    
+//    $("#inGender").on("blur",function(){
+ //       if($("#inGender").val() === null || $("#inGender").val() ===""){
+ //           $("#pGender").text("*性別を入力してください").css("color","red")
+ //           check2 = 1
+  //      }else if($("#inGender").val()!='0' && $("#inGender").val()!='1'){
+  //      	$("#pGender").text("*性別を0また1を入力してください").css("color","red")
+  //          check2 = 1
+   //     }else{
+    //        $("#pGender").text("✅")
+    //        check2 = 0
+     //   }
+   // })
+    
+     $("#inBirthday").on("blur",function(){
+    	 var reg = /^\d{8}$/
+        if(!reg.test($("#inBirthday").val())){
+            $("#pBirthday").text("*お誕生日は8桁の数値を入力してください").css("color","red")
+            check3 = 1
+        }else{
+            $("#pBirthday").text("✅")
+            check3 = 0
+        }
+     }) 
+     
+   $("#inPhone").on("blur",function(){
+        	 var reg = /^[0-9]{11}$/
+            if(!reg.test($("#inPhone").val())){
+                $("#pPhone").text("*電話は11桁の数値を入力してください").css("color","red")
+                check4 = 1
+            }else{
+                $("#pPhone").text("✅")
+                check4 = 0
+            }
+    })
+
+    $("#add").on("click",function(){
+
+        // check
+        if(check1 === 0 && check2 ===0 && check3 === 0 && check4 ===0){
+        	$("#form1").submit()
+        }
+    })
+})
+</script>
+</body>
+</html>

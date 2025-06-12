@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/mainList.css}">
+</head>
+<body>
+<h2>Students Management System</h2>
+<form th:action="@{/mainSearch}" method="post">
+<table>
+<tr>
+    <td>ID:</td>
+    <td><input type="text" name="id" th:value="${stu.id}"></td>
+</tr>
+<tr>
+    <td>name:</td>
+    <td><input type="text" name="stuName" th:value="${stu.stuName}"></td>
+</tr>
+<tr>
+    <td>gender:</td>
+    <td><input type="text" name="gender" th:value="${stu.gender}"></td>
+</tr>
+</table>
+<input type="submit" value="search">
+</form>
+<br>
+ <input id="newbut" type="button" onclick="location.href='/toAddPage'" value="new">
+ 
+<br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>gender</th>
+        <th>phone</th>
+        <th>options</th>
+    </tr>
+    <tr th:each="stu:${stuList}">
+        <td th:text="${stu.id}"></td>
+        <td th:text="${stu.stuName}"></td>
+        <td th:text="${stu.gender}"></td>
+        <td th:text="${stu.phone}"></td>
+        <td >
+            <a th:href="@{/stuDet(id=${stu.id})}">more</a>
+	        <a id="delcheck" th:href="@{/stuDel(id=${stu.id})}">delete</a>
+        </td>
+    </tr>
+</table> 
+<script>
+	var id = document.getElementById("delcheck");
+	id.addEventListener("click",function(){
+			if (!confirm("本当に削除しますか？")) {
+                event.preventDefault(); // 阻止跳转
+            }
+		})
+		
+	
+</script>
+</body>
+</html>

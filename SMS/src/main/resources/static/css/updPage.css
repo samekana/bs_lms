@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* 页面整体样式 */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 20px;
+    color: #333;
+}
+
+/* 标题样式 */
+h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* 表单与表格居中显示 */
+form, table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+/* 表格样式 */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* 表格标题栏 */
+table th {
+    background-color: #2c3e50;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 12px 16px;
+    text-align: left;
+}
+
+/* 单元格样式 */
+table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eaeaea;
+    vertical-align: middle;
+}
+
+/* 表格 hover 效果 */
+table tr:hover {
+    background-color: #f0f4f8;
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 按钮样式 */
+input[type="submit"],
+input[type="button"],
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 18px;
+    margin: 10px 5px 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 错误提示文字 */
+p {
+    color: red;
+    font-size: 0.85em;
+    margin: 0;
+    padding-left: 5px;
+}
+
+/* 表格中输入框宽度微调 */
+td input[type="text"] {
+    width: calc(100% - 16px);
+}
+
+/* 单选按钮与文字间距 */
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 10px;
+}
